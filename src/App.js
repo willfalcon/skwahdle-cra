@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from 'react';
 
-function App() {
+import { BrowserRouter as Router, Routes, Route, Redirect, Navigate } from 'react-router-dom';
+
+import Wrapper from './components/Wrapper';
+
+import Instructions from './components/Instructions';
+import Settings from './components/Settings';
+import Statistics from './components/Stats/Statistics';
+// here we subscribe to the store changes
+
+function App({ word }) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Wrapper word={word}>
+        <Routes>
+          <Route path="/instructions" element={<Instructions />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/stats" element={<Statistics />} />
+          <Route path="/" element={<Home />} />
+          <Route path="*" element={<Navigate to="/" replace="true" />} />
+        </Routes>
+      </Wrapper>
+    </Router>
   );
 }
+
+const Home = () => <></>;
 
 export default App;
