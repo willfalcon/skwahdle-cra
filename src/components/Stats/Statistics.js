@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import { BsShareFill } from 'react-icons/bs';
@@ -15,7 +15,7 @@ import { useNavigate } from 'react-router-dom';
 import { resetBoard } from '../lettersSlice';
 
 const Statistics = () => {
-  const { useAlert, resetState, word } = useSiteContext();
+  const { word } = useSiteContext();
 
   const { stats, attempts, solved, failed } = useSelector(({ stats, letters }) => {
     return {
@@ -98,7 +98,7 @@ const Statistics = () => {
 
       <Button
         className="share"
-        style="green"
+        color="green"
         onClick={() => {
           const copyText = generateCopyText(attempts);
 

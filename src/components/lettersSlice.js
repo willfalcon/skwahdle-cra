@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import compareWord from '../lib/compareWord';
 
 const emptyLetters = [
   ['', '', '', '', ''],

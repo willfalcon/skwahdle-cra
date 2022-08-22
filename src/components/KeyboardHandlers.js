@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import checkWordExists from '../lib/checkWordExists';
 import lettersList from '../lib/lettersList';
-import { getCurrentAttempt, logAttempt, backspace, setLetter, setWorkingBox, setSolved } from './lettersSlice';
+import { getCurrentAttempt, logAttempt, backspace, setLetter, setWorkingBox } from './lettersSlice';
 import { updateStats } from './Stats/statsSlice';
 import useSiteContext from './SiteContext';
 import compareWord from '../lib/compareWord';
@@ -16,7 +16,6 @@ const KeyboardHandlers = ({ children }) => {
   const currentAttempt = useSelector(state => getCurrentAttempt(state));
   const workingBox = useSelector(state => state.letters.workingBox);
   const workingRow = useSelector(state => state.letters.workingRow);
-  const solved = useSelector(state => state.letters.solved);
   const { attempts } = useSelector(state => {
     const attempts = state.letters.attempts;
     return {

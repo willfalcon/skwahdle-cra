@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import Modal from './Modal';
@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Settings = () => {
   // const [open, setOpen] = useState(false);
-  const { setTheme, resetState, setStatsOpen } = useSiteContext();
+  const { setTheme } = useSiteContext();
 
   // useEffect(() => {
   //   setOpen(true);

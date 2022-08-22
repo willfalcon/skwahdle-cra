@@ -14,7 +14,6 @@ async function getWord() {
           console.log({ err });
           reject(err);
         }
-        console.log(records[0].fields);
         resolve(records[0].fields.Word);
       });
   });
