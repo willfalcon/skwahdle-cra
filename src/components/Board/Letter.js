@@ -1,10 +1,8 @@
 import React, { useRef, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import classNames from 'classnames';
 
 import { useSpring, animated, config } from 'react-spring';
 
-import useSiteContext from '../SiteContext';
 import { useSelector } from 'react-redux';
 
 const Letter = ({ exampleStatus = false, status, example, letter, locked, box, row }) => {
@@ -14,21 +12,18 @@ const Letter = ({ exampleStatus = false, status, example, letter, locked, box, r
     delay: box * 100,
   });
 
-  // const { workingRow, workingBox, setWorkingBox, letters } = useSiteContext();
   const { workingRow, workingBox } = useSelector(state => ({ workingRow: state.letters.workingRow, workingBox: state.letters.workingBox }));
-  // const rowLetters = letters[row];
-
-  // const lastLetter = rowLetters[4] ? 4 : rowLetters[3] ? 3 : rowLetters[2] ? 2 : rowLetters[1] ? 1 : rowLetters[0] ? 0 : false;
 
   const ref = useRef();
   const [focus, setFocus] = useState(false);
+
   useEffect(() => {
     if (workingRow === row && workingBox === box && ref.current) {
       setFocus(true);
     } else {
       setFocus(false);
     }
-  }, [workingRow, workingBox]);
+  }, [workingRow, workingBox, box, row]);
 
   return (
     <Flip

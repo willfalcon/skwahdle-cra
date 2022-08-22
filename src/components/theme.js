@@ -77,7 +77,7 @@ const theme = {
     ...base,
   },
   green: {
-    dark: '#201E50',
+    // dark: '#201E50',
     dark: 'white',
     background: '#A9C5A0',
     wrong: '#525B76',

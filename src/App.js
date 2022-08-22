@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react';
-
-import { BrowserRouter as Router, Routes, Route, Redirect, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
 import Wrapper from './components/Wrapper';
 

@@ -3,14 +3,14 @@ import styled from 'styled-components';
 import { Link, useNavigate } from 'react-router-dom';
 import { animated, useTransition } from 'react-spring';
 import { IoClose } from 'react-icons/io5';
-import { darken, rgba } from 'polished';
+import { darken } from 'polished';
 
 import { media } from './theme';
 import { useOnClickOutside } from '../lib/hooks';
-import useSiteContext from './SiteContext';
+// import useSiteContext from './SiteContext';
 
-const Modal = ({ open, onClose, children, style, className }) => {
-  const { sessionId, useAlert } = useSiteContext();
+const Modal = ({ open, children, style, className }) => {
+  // const { sessionId, useAlert } = useSiteContext();
   // const showAlert = useAlert('Copied session ID.');
   let navigate = useNavigate();
 

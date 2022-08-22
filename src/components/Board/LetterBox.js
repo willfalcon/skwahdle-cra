@@ -1,21 +1,17 @@
 import React, { useEffect } from 'react';
 
-import styled, { useTheme } from 'styled-components';
+import styled from 'styled-components';
 import { useSpring, animated, config } from 'react-spring';
 
 import Letter from './Letter';
 import { media } from '../theme';
 
-import useSiteContext from '../SiteContext';
 import { useSelector } from 'react-redux';
 import { getLetterByLocation } from '../lettersSlice';
 
 const LetterBox = ({ row, box, locked, example = false, exampleStatus = false }) => {
-  // const { letters, attempts } = useSiteContext();
   const letter = useSelector(state => getLetterByLocation(state, row, box));
   const status = useSelector(state => state.letters.attempts[row][box]);
-  // const letter = letters[row][box];
-  // const status = attempts[row][box];
 
   const [wrapperStyles, wrapperApi] = useSpring(() => ({ transform: 'scale(1)', config: config.stiff }));
 
@@ -30,7 +26,6 @@ const LetterBox = ({ row, box, locked, example = false, exampleStatus = false })
 
   return (
     <BoxWrapper style={wrapperStyles}>
-      {/* <Letter letter={letter} status={status} exampleStatus={exampleStatus} example={example} locked={locked} box={box} row={row} /> */}
       <Letter letter={letter} status={status} exampleStatus={exampleStatus} example={example} locked={locked} box={box} row={row} />
     </BoxWrapper>
   );

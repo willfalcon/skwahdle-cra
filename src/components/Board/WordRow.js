@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import styled, { keyframes } from 'styled-components';
 import useKeyboardHandlers from '../KeyboardHandlers';
 
-import useSiteContext from '../SiteContext';
 import LetterBox from './LetterBox';
 
 const WordRow = ({ row }) => {

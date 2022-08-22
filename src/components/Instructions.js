@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useLayoutEffect, useRef } from 'react';
+import React, { useState, useLayoutEffect, useRef } from 'react';
 
 import styled from 'styled-components';
-import { darken, lighten, rgba } from 'polished';
+import { darken, rgba } from 'polished';
 
 import Modal from './Modal';
 
@@ -9,17 +9,9 @@ import { Row } from './Board/WordRow';
 import LetterBox from './Board/LetterBox';
 import { KeyRow } from './Keyboard/Keyboard';
 import ExampleKey from './Keyboard/ExampleKey';
-import useSiteContext from './SiteContext';
 
 const Instructions = () => {
-  // const { instructionsOpen, setInstructionsOpen } = useSiteContext();
   const [advanced, setAdvanced] = useState(false);
-  // useEffect(() => {
-  //   setInstructionsOpen(true);
-  //   return () => {
-  //     setInstructionsOpen(false);
-  //   };
-  // });
 
   const ref = useRef(null);
   const [height, setHeight] = useState(0);
