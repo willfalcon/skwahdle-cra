@@ -8,6 +8,7 @@ import { getCurrentAttempt, logAttempt, backspace, setLetter, setWorkingBox } fr
 import { updateStats } from './Stats/statsSlice';
 import useSiteContext from './SiteContext';
 import compareWord from '../lib/compareWord';
+import { updateKeyStatuses } from './Keyboard/keyboardSlice';
 
 const KeyboardContext = React.createContext();
 
@@ -22,6 +23,7 @@ const KeyboardHandlers = ({ children }) => {
       attempts,
     };
   });
+
   const { word, setAlerts } = useSiteContext();
 
   const [specialKey, setSpecialKey] = useState(false);
@@ -83,6 +85,7 @@ const KeyboardHandlers = ({ children }) => {
       if (found) {
         const { solved, result } = compareWord(currentAttempt, word);
         dispatch(logAttempt({ result, solved }));
+        dispatch(updateKeyStatuses({ currentAttempt, result, word }));
         const newWorkingRow = workingRow === 6 ? workingRow : workingRow + 1;
         if (solved || newWorkingRow === 6) {
           // update stats

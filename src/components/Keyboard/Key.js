@@ -3,33 +3,23 @@ import styled from 'styled-components';
 import classNames from 'classnames';
 
 import useSiteContext from '../SiteContext';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { setLetter } from '../lettersSlice';
 
-const Key = ({ children, exampleStatus = false }) => {
+const Key = ({ children, exampleStatus = false, style }) => {
   // const { setNextLetter } = useContext(KeyboardContext);
-  const { disabled, keyStatuses = [] } = useSiteContext();
+  const { disabled } = useSiteContext();
 
   const dispatch = useDispatch();
 
   const [keyStatus, setStatus] = useState('unused');
 
-  useEffect(() => {
-    if (keyStatuses) {
-      keyStatuses.forEach(status => {
-        const keys = status.filter(status => status.key === children);
-
-        if (keys.length && keys[0].status !== keyStatus) {
-          setStatus(keys[0].status);
-        }
-      });
-    }
-  }, [children, keyStatus, keyStatuses]);
+  const keyStatuses = useSelector(state => state.keys.keyStatuses);
 
   useEffect(() => {
     if (keyStatuses.length) {
-      const keys = keyStatuses[keyStatuses.length - 1].filter(status => status.key === children);
+      const keys = keyStatuses.filter(status => status.key === children);
       if (keys.length && keys[0].status !== keyStatus) {
         setStatus(keys[0].status);
       }
@@ -38,6 +28,7 @@ const Key = ({ children, exampleStatus = false }) => {
     }
   }, [keyStatuses, children, keyStatus]);
 
+  const className = exampleStatus ? exampleStatus : keyStatus;
   return (
     <StyledKey
       onClick={e => {
@@ -45,9 +36,10 @@ const Key = ({ children, exampleStatus = false }) => {
       }}
       data-key={children}
       status={exampleStatus || keyStatus}
-      className={classNames('key', keyStatus, exampleStatus)}
+      className={classNames('key', className)}
       aria-disabled={disabled}
       disabled={disabled}
+      style={style}
     >
       {children}
     </StyledKey>

@@ -6,7 +6,7 @@ const ExampleKey = ({ children, exampleStatus = 'unused' }) => {
     <StyledKey
       data-key={children}
       status={exampleStatus}
-      className="key"
+      // className={classNames('key', keyStatus, exampleStatus)}
       style={{ padding: 0, justifyContent: 'center', alignItems: 'center' }}
     >
       {children}

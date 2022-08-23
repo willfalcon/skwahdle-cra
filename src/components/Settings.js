@@ -7,6 +7,7 @@ import Button from './Button';
 import { useDispatch } from 'react-redux';
 import { resetBoard } from './lettersSlice';
 import { useNavigate } from 'react-router-dom';
+import { resetStatuses } from './Keyboard/keyboardSlice';
 
 const Settings = () => {
   // const [open, setOpen] = useState(false);
@@ -43,6 +44,7 @@ const Settings = () => {
       <Button
         onClick={() => {
           dispatch(resetBoard());
+          dispatch(resetStatuses());
           navigate('/');
         }}
         secondary

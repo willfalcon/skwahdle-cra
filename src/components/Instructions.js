@@ -8,7 +8,8 @@ import Modal from './Modal';
 import { Row } from './Board/WordRow';
 import LetterBox from './Board/LetterBox';
 import { KeyRow } from './Keyboard/Keyboard';
-import ExampleKey from './Keyboard/ExampleKey';
+
+import Key from './Keyboard/Key';
 
 const Instructions = () => {
   const [advanced, setAdvanced] = useState(false);
@@ -27,7 +28,7 @@ const Instructions = () => {
       <p>Guess the Word in 6 tries.</p>
       <p>Each guess must be a valid 5 letter word. Hit the enter button to submit.</p>
       <p>After each guess, the color of the tiles will change to show how close your guess was to the word.</p>
-      <hr />
+
       <div className="tabs">
         <button onClick={() => setAdvanced(false)}>Examples</button>
         <button onClick={() => setAdvanced(true)}>Advanced Examples</button>
@@ -37,10 +38,10 @@ const Instructions = () => {
           <div className="panel">
             <Row example={true} row={0} className="example" style={{ justifyContent: 'flex-start' }}>
               <LetterBox locked={true} example="w" row={0} box={0} exampleStatus="correct" />
-              <LetterBox locked={true} example="e" row={0} box={1} />
-              <LetterBox locked={true} example="a" row={0} box={2} />
-              <LetterBox locked={true} example="r" row={0} box={3} />
-              <LetterBox locked={true} example="y" row={0} box={4} />
+              <LetterBox locked={false} example="e" row={0} box={1} />
+              <LetterBox locked={false} example="a" row={0} box={2} />
+              <LetterBox locked={false} example="r" row={0} box={3} />
+              <LetterBox locked={false} example="y" row={0} box={4} />
             </Row>
 
             <p>
@@ -48,11 +49,11 @@ const Instructions = () => {
             </p>
 
             <Row example={true} row={1} className="example" style={{ justifyContent: 'flex-start' }}>
-              <LetterBox locked={true} example="p" row={1} box={0} />
+              <LetterBox locked={false} example="p" row={1} box={0} />
               <LetterBox locked={true} example="i" row={1} box={1} exampleStatus="kinda" />
-              <LetterBox locked={true} example="l" row={1} box={2} />
-              <LetterBox locked={true} example="l" row={1} box={3} />
-              <LetterBox locked={true} example="s" row={1} box={4} />
+              <LetterBox locked={false} example="l" row={1} box={2} />
+              <LetterBox locked={false} example="l" row={1} box={3} />
+              <LetterBox locked={false} example="s" row={1} box={4} />
             </Row>
 
             <p>
@@ -60,11 +61,11 @@ const Instructions = () => {
             </p>
 
             <Row example={true} row={2} className="example" style={{ justifyContent: 'flex-start' }}>
-              <LetterBox locked={true} example="v" row={2} box={0} />
-              <LetterBox locked={true} example="a" row={2} box={1} />
-              <LetterBox locked={true} example="g" row={2} box={2} />
+              <LetterBox locked={false} example="v" row={2} box={0} />
+              <LetterBox locked={false} example="a" row={2} box={1} />
+              <LetterBox locked={false} example="g" row={2} box={2} />
               <LetterBox locked={true} example="u" row={2} box={3} exampleStatus="wrong" />
-              <LetterBox locked={true} example="e" row={2} box={4} />
+              <LetterBox locked={false} example="e" row={2} box={4} />
             </Row>
 
             <p>
@@ -75,51 +76,91 @@ const Instructions = () => {
           <div className="panel">
             <Row example={true} row={0} className="example">
               <LetterBox locked={true} example="e" row={0} box={0} exampleStatus="correct" />
-              <LetterBox locked={true} example="n" row={0} box={1} />
-              <LetterBox locked={true} example="t" row={0} box={2} />
+              <LetterBox locked={true} example="n" row={0} box={1} exampleStatus="wrong" />
+              <LetterBox locked={true} example="t" row={0} box={2} exampleStatus="correct" />
               <LetterBox locked={true} example="e" row={0} box={3} exampleStatus="kinda" />
-              <LetterBox locked={true} example="r" row={0} box={4} />
+              <LetterBox locked={true} example="r" row={0} box={4} exampleStatus="wrong" />
             </Row>
 
             <p>
               The first letter <strong>E</strong> is in the word and in the correct spot.
-            </p>
-            <p>
+              <br />
               The second letter <strong>E</strong> is in the word, but this one is in the wrong spot.
             </p>
 
             <KeyRow>
-              <ExampleKey>q</ExampleKey>
-              <ExampleKey exampleStatus="correct">w</ExampleKey>
-              <ExampleKey>e</ExampleKey>
-              <ExampleKey>r</ExampleKey>
-              <ExampleKey exampleStatus="correct">t</ExampleKey>
-              <ExampleKey>y</ExampleKey>
-              <ExampleKey>u</ExampleKey>
-              <ExampleKey exampleStatus="kinda">i</ExampleKey>
-              <ExampleKey>o</ExampleKey>
-              <ExampleKey exampleStatus="wrong">p</ExampleKey>
+              <Key style={{ padding: 0 }} exampleStatus="unused">
+                q
+              </Key>
+              <Key style={{ padding: 0 }} exampleStatus="unused">
+                w
+              </Key>
+              <Key style={{ padding: 0 }} exampleStatus="kinda">
+                e
+              </Key>
+              <Key style={{ padding: 0 }} exampleStatus="wrong">
+                r
+              </Key>
+              <Key style={{ padding: 0 }} exampleStatus="correct">
+                t
+              </Key>
+              <Key style={{ padding: 0 }} exampleStatus="unused">
+                y
+              </Key>
+              <Key style={{ padding: 0 }} exampleStatus="unused">
+                u
+              </Key>
+              <Key style={{ padding: 0 }} exampleStatus="unused">
+                i
+              </Key>
+              <Key style={{ padding: 0 }} exampleStatus="unused">
+                o
+              </Key>
+              <Key style={{ padding: 0 }} exampleStatus="unused">
+                p
+              </Key>
             </KeyRow>
             <p>Generally, colors on the keyboard match colors on the board.</p>
+            <hr />
 
             <Row example={true} row={0} className="example">
               <LetterBox locked={true} example="e" row={0} box={0} exampleStatus="correct" />
-              <LetterBox locked={true} example="b" row={0} box={1} />
-              <LetterBox locked={true} example="o" row={0} box={2} />
+              <LetterBox locked={true} example="b" row={0} box={1} exampleStatus="wrong" />
+              <LetterBox locked={true} example="o" row={0} box={2} exampleStatus="wrong" />
               <LetterBox locked={true} example="n" row={0} box={3} exampleStatus="kinda" />
               <LetterBox locked={true} example="y" row={0} box={4} exampleStatus="correct" />
             </Row>
             <KeyRow>
-              <ExampleKey>q</ExampleKey>
-              <ExampleKey>w</ExampleKey>
-              <ExampleKey exampleStatus="kinda">e</ExampleKey>
-              <ExampleKey>r</ExampleKey>
-              <ExampleKey>t</ExampleKey>
-              <ExampleKey exampleStatus="correct">y</ExampleKey>
-              <ExampleKey>u</ExampleKey>
-              <ExampleKey>i</ExampleKey>
-              <ExampleKey exampleStatus="wrong">o</ExampleKey>
-              <ExampleKey>p</ExampleKey>
+              <Key style={{ padding: 0 }} exampleStatus="unused">
+                q
+              </Key>
+              <Key style={{ padding: 0 }} exampleStatus="unused">
+                w
+              </Key>
+              <Key style={{ padding: 0 }} exampleStatus="kinda">
+                e
+              </Key>
+              <Key style={{ padding: 0 }} exampleStatus="unused">
+                r
+              </Key>
+              <Key style={{ padding: 0 }} exampleStatus="unused">
+                t
+              </Key>
+              <Key style={{ padding: 0 }} exampleStatus="correct">
+                y
+              </Key>
+              <Key style={{ padding: 0 }} exampleStatus="unused">
+                u
+              </Key>
+              <Key style={{ padding: 0 }} exampleStatus="unused">
+                i
+              </Key>
+              <Key style={{ padding: 0 }} exampleStatus="wrong">
+                o
+              </Key>
+              <Key style={{ padding: 0 }} exampleStatus="unused">
+                p
+              </Key>
             </KeyRow>
 
             <p>
@@ -144,10 +185,10 @@ const InstructionModal = styled(Modal)`
   h3 {
     margin-top: 0;
   }
-  hr {
+  /* hr {
     margin-bottom: 0;
     display: none;
-  }
+  } */
   .tabs {
     background: ${({ theme }) => darken(0.05, theme.background)};
     color: ${({ theme }) => theme.textColor};

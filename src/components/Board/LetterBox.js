@@ -26,7 +26,15 @@ const LetterBox = ({ row, box, locked, example = false, exampleStatus = false })
 
   return (
     <BoxWrapper style={wrapperStyles}>
-      <Letter letter={letter} status={status} exampleStatus={exampleStatus} example={example} locked={locked} box={box} row={row} />
+      <Letter
+        letter={letter}
+        status={!example ? status : null}
+        exampleStatus={exampleStatus}
+        example={example}
+        locked={locked}
+        box={box}
+        row={row}
+      />
     </BoxWrapper>
   );
 };

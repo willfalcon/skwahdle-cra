@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import DistributionChart from './DistributionChart';
 import { useNavigate } from 'react-router-dom';
 import { resetBoard } from '../lettersSlice';
+import { resetStatuses } from '../Keyboard/keyboardSlice';
 
 const Statistics = () => {
   const { word } = useSiteContext();
@@ -50,6 +51,7 @@ const Statistics = () => {
               className="underline"
               onClick={() => {
                 dispatch(resetBoard());
+                dispatch(resetStatuses());
                 navigate('/');
               }}
             >
