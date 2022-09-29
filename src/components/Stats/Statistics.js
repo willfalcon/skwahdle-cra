@@ -118,6 +118,12 @@ const Statistics = () => {
         Share
         <BsShareFill style={{ marginLeft: '5px' }} />
       </Button>
+
+      <p style={{ opacity: 0.55, fontSize: '14px', margin: '4rem 0 0' }}>
+        Stats missing? They're not gone, just hidden.
+        <br />
+        <a href="mailto: willkhawks@gmail.com">Email me to let me know and I'll try to fix it.</a>
+      </p>
     </StatsModal>
   );
 };

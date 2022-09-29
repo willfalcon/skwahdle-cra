@@ -90,8 +90,8 @@ export const lettersSlice = createSlice({
       state.attempts = attempts;
       state.workingRow = workingRow;
       state.workingBox = workingBox;
-      state.solved = solved;
-      state.failed = failed;
+      state.solved = solved === 'true';
+      state.failed = failed === 'true';
       state.locks = rowLocks;
     },
   },
