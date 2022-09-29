@@ -35,8 +35,18 @@ export const statsSlice = createSlice({
         state.currentStreak = 0;
       }
     },
+    copyStats(state, action) {
+      console.log('are we getting here?');
+      console.log(action.payload);
+      const { gamesPlayed, gamesWon, guesses, maxStreak, currentStreak } = action.payload;
+      state.gamesPlayed = gamesPlayed;
+      state.gamesWon = gamesWon;
+      state.guesses = guesses;
+      state.maxStreak = maxStreak;
+      state.currentStreak = currentStreak;
+    },
   },
 });
 
-export const { updateStats } = statsSlice.actions;
+export const { updateStats, copyStats } = statsSlice.actions;
 export default statsSlice.reducer;

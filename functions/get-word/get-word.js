@@ -5,7 +5,6 @@ async function getWord() {
   return new Promise((resolve, reject) => {
     base('Words')
       .select({
-        // Selecting the first 3 records in Grid view:
         maxRecords: 1,
         view: 'Today',
       })
@@ -14,6 +13,7 @@ async function getWord() {
           console.log({ err });
           reject(err);
         }
+        console.log(records);
         resolve(records[0].fields.Word);
       });
   });

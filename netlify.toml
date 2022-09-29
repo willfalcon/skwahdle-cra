@@ -1,2 +1,6 @@
 [functions]
   included_files = ["words5.txt"]
+
+[dev]
+  publish = "build/"
+  functions = "functions"

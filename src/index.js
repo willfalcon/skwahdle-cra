@@ -9,6 +9,7 @@ import store from './store';
 import { saveState } from './browser-storage';
 import debounce from './lib/debounce';
 import { resetBoard, setLastWord } from './components/lettersSlice';
+import checkIsNewBuild from './lib/migrate';
 
 store.subscribe(
   // we use debounce to save the state once each 800ms
@@ -20,8 +21,7 @@ store.subscribe(
 
 function checkIfNewWord(word) {
   const state = store.getState();
-
-  if (!state.letters.lastWord || state.letters.lastWord !== word) {
+  if (state.letters.lastWord && state.letters.lastWord !== word) {
     console.log('reset board');
     store.dispatch(resetBoard());
     store.dispatch(setLastWord(word));
@@ -35,6 +35,8 @@ async function getWord() {
 }
 
 async function initSkwahdle() {
+  checkIsNewBuild();
+
   const word = await getWord();
   checkIfNewWord(word);
   const root = ReactDOM.createRoot(document.getElementById('root'));

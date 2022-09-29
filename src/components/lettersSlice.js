@@ -83,6 +83,17 @@ export const lettersSlice = createSlice({
     setLastWord(state, action) {
       state.lastWord = action.payload;
     },
+    migrateState(state, action) {
+      console.log('is this harfoot gonna make it?');
+      const { letters, attempts, rowLocks, workingRow, workingBox, solved, failed } = action.payload;
+      state.letters = letters;
+      state.attempts = attempts;
+      state.workingRow = workingRow;
+      state.workingBox = workingBox;
+      state.solved = solved;
+      state.failed = failed;
+      state.locks = rowLocks;
+    },
   },
 });
 
@@ -94,5 +105,5 @@ export const getCurrentAttempt = state => {
   return state.letters.letters[state.letters.workingRow];
 };
 
-export const { setLetter, backspace, logAttempt, setWorkingBox, resetBoard, setLastWord } = lettersSlice.actions;
+export const { setLetter, backspace, logAttempt, setWorkingBox, resetBoard, setLastWord, migrateState } = lettersSlice.actions;
 export default lettersSlice.reducer;

@@ -10,6 +10,7 @@
     "airtable": "^0.11.4",
     "classnames": "^2.3.1",
     "date-fns": "^2.29.2",
+    "lodash": "^4.17.21",
     "polished": "^4.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -26,7 +27,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "debug": "netlify dev --inspect"
   },
   "eslintConfig": {
     "extends": [
