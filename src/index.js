@@ -10,6 +10,7 @@ import { saveState } from './browser-storage';
 import debounce from './lib/debounce';
 import { resetBoard, setLastWord } from './components/lettersSlice';
 import checkIsNewBuild from './lib/migrate';
+import { resetStatuses } from './components/Keyboard/keyboardSlice';
 
 store.subscribe(
   // we use debounce to save the state once each 800ms
@@ -24,6 +25,7 @@ function checkIfNewWord(word) {
   if (state.letters.lastWord && state.letters.lastWord !== word) {
     console.log('reset board');
     store.dispatch(resetBoard());
+    store.dispatch(resetStatuses());
     store.dispatch(setLastWord(word));
   }
 }

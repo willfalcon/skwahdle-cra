@@ -6,7 +6,6 @@ import isEqual from 'lodash/isEqual';
 export default function checkIsNewBuild() {
   const migrated = localStorage.getItem('migrated') === 'true';
   if (!migrated) {
-    console.log(`and we're migrating`);
     console.log(`some harfoots left behind`);
     // Most important: copy stats
     const oldStats = localStorage.getItem('stats');

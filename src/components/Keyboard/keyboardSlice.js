@@ -52,7 +52,6 @@ export const keySlice = createSlice({
 
         const existingIndex = state.keyStatuses.length
           ? state.keyStatuses.findIndex(status => {
-              console.log(status);
               return status.key === attempt;
             })
           : -1;
