@@ -84,7 +84,6 @@ export const lettersSlice = createSlice({
       state.lastWord = action.payload;
     },
     migrateState(state, action) {
-      console.log('is this harfoot gonna make it?');
       const { letters, attempts, rowLocks, workingRow, workingBox, solved, failed } = action.payload;
       state.letters = letters;
       state.attempts = attempts;

@@ -2,7 +2,6 @@ const fs = require('fs');
 
 exports.handler = async function (event) {
   const params = event.queryStringParameters;
-  console.log(params);
   const found = await searchList(params.word);
 
   return {

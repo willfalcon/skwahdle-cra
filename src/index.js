@@ -26,8 +26,8 @@ function checkIfNewWord(word) {
     console.log('reset board');
     store.dispatch(resetBoard());
     store.dispatch(resetStatuses());
-    store.dispatch(setLastWord(word));
   }
+  store.dispatch(setLastWord(word));
 }
 
 async function getWord() {

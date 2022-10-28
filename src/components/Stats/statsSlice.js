@@ -36,8 +36,6 @@ export const statsSlice = createSlice({
       }
     },
     copyStats(state, action) {
-      console.log('are we getting here?');
-      console.log(action.payload);
       const { gamesPlayed, gamesWon, guesses, maxStreak, currentStreak } = action.payload;
       state.gamesPlayed = gamesPlayed;
       state.gamesWon = gamesWon;

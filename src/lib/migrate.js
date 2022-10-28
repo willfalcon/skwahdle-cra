@@ -12,7 +12,6 @@ export default function checkIsNewBuild() {
     if (oldStats) {
       const parsedStats = JSON.parse(oldStats);
       if (parsedStats.hasOwnProperty('guesses') && parsedStats.hasOwnProperty('currentStreak')) {
-        console.log('calling copyStats reducer');
         store.dispatch(copyStats(parsedStats));
 
         if (isEqual(store.getState().stats, parsedStats)) {
@@ -29,7 +28,6 @@ export default function checkIsNewBuild() {
         const attempts = JSON.parse(localStorage.getItem('attempts'));
 
         const todaysGuesses = localStorage.getItem('todaysGuesses');
-        console.log(todaysGuesses);
         const solved = localStorage.getItem('solved');
         const failed = localStorage.getItem('failed');
 

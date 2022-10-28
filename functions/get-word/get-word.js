@@ -13,7 +13,6 @@ async function getWord() {
           console.log({ err });
           reject(err);
         }
-        console.log(records);
         resolve(records[0].fields.Word);
       });
   });

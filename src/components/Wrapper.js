@@ -46,9 +46,7 @@ const Wrapper = ({ children, word }) => {
 
 export const useAlert = (text, timeout = 2000) => {
   const { setAlerts } = useSiteContext();
-  console.log('running hook');
   return function () {
-    console.log('setting alert', text);
     setAlerts([text]);
     setTimeout(() => {
       setAlerts([]);
