@@ -31,16 +31,24 @@ function checkIfNewWord(word) {
 }
 
 async function getWord() {
-  const raw = await fetch(`/.netlify/functions/get-word`);
-  const res = await raw.json();
-  return res.word;
+  try {
+    const raw = await fetch(`/.netlify/functions/get-word`);
+    if (!raw.ok) throw new Error(`get-word failed with status ${raw.status}`);
+    const res = await raw.json();
+    return res.word;
+  } catch (error) {
+    console.error('Error fetching word:', error);
+    return '';
+  }
 }
 
 async function initSkwahdle() {
   checkIsNewBuild();
 
   const word = await getWord();
-  checkIfNewWord(word);
+
+  // An empty word means the fetch failed; don't wipe the player's board
+  if (word) checkIfNewWord(word);
   const root = ReactDOM.createRoot(document.getElementById('root'));
   root.render(
     <React.StrictMode>
